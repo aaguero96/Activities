@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentEntity } from 'src/infra/database/entities/student.entity';
-import { createClassProvider } from 'src/shared/helpers/use-class';
+import { createClassProvider } from 'src/shared/helpers/use-class.helper';
 import { STUDENT_REPOSITORY } from './student-repository.interface';
 import { StudentRepository } from './student.repository';
 

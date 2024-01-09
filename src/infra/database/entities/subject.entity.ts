@@ -13,7 +13,7 @@ export class SubjectEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ name: 'name', type: 'varchar' })
+  @Column({ name: 'name', type: 'varchar', unique: true })
   name: string;
 
   @ManyToMany(() => UniversityEntity, (university) => university.subjects)
