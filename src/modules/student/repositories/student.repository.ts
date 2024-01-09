@@ -2,6 +2,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { IStudentRepository } from './student-repository.interface';
 import { StudentEntity } from 'src/infra/database/entities/student.entity';
 import { DeepPartial, Repository } from 'typeorm';
+import { InternalServerErrorException } from '@nestjs/common';
 
 export class StudentRepository implements IStudentRepository {
   constructor(
@@ -10,7 +11,11 @@ export class StudentRepository implements IStudentRepository {
   ) {}
 
   async create(student: DeepPartial<StudentEntity>): Promise<StudentEntity> {
-    const entity = this._repo.create(student);
-    return this._repo.save(entity);
+    try {
+      const entity = this._repo.create(student);
+      return this._repo.save(entity);
+    } catch (e) {
+      throw new InternalServerErrorException();
+    }
   }
 }
