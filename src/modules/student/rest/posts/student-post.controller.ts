@@ -16,7 +16,6 @@ export class StudentPostController {
   async registerStudent(
     @Body() student: RegisterStudentDTO,
   ): Promise<StudentEntity> {
-    console.log(student);
     return this._service.registerStudent(student);
   }
 }
