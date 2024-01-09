@@ -1,9 +1,14 @@
-import { IsString, Length } from 'class-validator';
+import { IsString } from 'class-validator';
+import { TitledString } from 'src/shared/transformers/titled-string.transformer';
+import { Trim } from 'src/shared/transformers/trim.transformer';
+import { IsPhoneNumber } from 'src/shared/validators/is-phone-number.validator';
 
 export class RegisterStudentDTO {
   @IsString()
+  @TitledString()
   name: string;
 
-  @Length(11, 11)
+  @IsPhoneNumber()
+  @Trim()
   phone: string;
 }
