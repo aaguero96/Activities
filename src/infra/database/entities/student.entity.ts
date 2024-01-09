@@ -21,8 +21,8 @@ export class StudentEntity {
   @Column({ name: 'phone', type: 'varchar' })
   phone: string;
 
-  @Column({ name: 'active', type: 'boolean' })
-  active: boolean;
+  @Column({ name: 'active', type: 'boolean', default: true })
+  active?: boolean;
 
   @ManyToMany(() => UniversityEntity)
   @JoinTable({
